@@ -174,15 +174,15 @@ class MessageForm extends React.Component {
 	};
 
 	render() {
-		 // eslint-disable-next-line
+		// eslint-disable-next-line
 		const { errors, message, loading, modal, uploadState, percentUploaded, emojiPicker } = this.state;
 		return (
 			<Segment className="message__form">
 				{ emojiPicker && (
-					<Picker 
+					<Picker
+						style={{ position: "absolute", bottom: "100px", left: "15px" }} 
 						set="messenger"
 						onSelect={this.handleAddEmoji}
-						className="emojipicker"
 						title="Pick your emoji"
 						emoji="point_up"
 					/>
@@ -216,13 +216,13 @@ class MessageForm extends React.Component {
 						labelPosition="right"
 						icon="cloud upload"
 					/>
-					</Button.Group>
-					<FileModal 
-						modal={modal}
-						closeModal={this.closeModal}
-						uploadFile={this.uploadFile}
-					/>
-					<ProgressBar uploadState={uploadState} percentUploaded={percentUploaded} />
+				</Button.Group>
+				<FileModal 
+					modal={modal}
+					closeModal={this.closeModal}
+					uploadFile={this.uploadFile}
+				/>
+				<ProgressBar uploadState={uploadState} percentUploaded={percentUploaded} />
 			</Segment>
 		);
 	}

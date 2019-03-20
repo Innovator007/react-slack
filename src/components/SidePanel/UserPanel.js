@@ -117,9 +117,9 @@ class UserPanel extends React.Component {
 						<Modal.Header>Change Avatar</Modal.Header>
 						<Modal.Content>
 							<Input onChange={this.handleChange} type="file" fluid label="New Avatar" name="previewImage" />
-							<Grid centered stackable columns={2}>
+							<Grid style={{ background: "transparent" }} centered stackable columns={2}>
 								<Grid.Row centered>
-									<Grid.Column className="ui center align grid">
+									<Grid.Column style={{ background: "transparent" }} className="ui center align grid">
 										{ previewImage && (
 											<AvatarEditor 
 												ref={node => (this.avatarEditor = node)}

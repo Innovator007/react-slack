@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Comment, Image } from 'semantic-ui-react';
+import { Comment, Image, Popup } from 'semantic-ui-react';
 
 const isOwnMessage = (message, user) => {
 	return message.user.id === user.uid ? 'message__self' : '';
@@ -17,9 +17,7 @@ const Message = ({ message, user }) => {
 		<Comment>
 			<Comment.Avatar src={message.user.avatar} />
 			<Comment.Content className={isOwnMessage(message, user)}>
-				<Comment.Author as="a">
-					{ message.user.name }
-				</Comment.Author>
+			<Popup trigger={<Comment.Author as="a">{ message.user.name }</Comment.Author> } header={message.user.name} content={ message.content } position="right center" />
 				<Comment.Metadata>
 					{ timefromnow(message.timestamp) }
 				</Comment.Metadata>

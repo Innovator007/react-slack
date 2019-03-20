@@ -45,7 +45,7 @@ class MetaPanel extends Component {
 			<React.Fragment>
 			<Segment loading={!channel}>
 				<Segment>
-				<Header as="h2">About # {channel && channel.name}</Header>
+				<Header as="h2">About #{channel && channel.name}</Header>
 				</Segment>
 				<Accordion styled attached="true">
 					

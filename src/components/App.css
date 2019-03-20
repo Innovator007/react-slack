@@ -1,9 +1,12 @@
-html,
-body,
+html, body,
 .app {
 	height: 100vh;
 	background: #eee;
-	padding: 1em;
+}
+
+.grid {
+	display: flex;
+	background: #eee;
 }
 
 .messages__column {
@@ -18,17 +21,10 @@ body,
 }
 
 .message__form {
-	position: absolute !important;
-	bottom: 1em;
-	left: 1em;
-	right: 1em;
-	/*margin-left: 320px !important;*/
-	z-index: 200;
-}
-
-.emojipicker {
 	position: absolute;
-	background: transparent;
+	bottom: 0;
+	left: 0;
+	z-index: 200;
 }
 
 .message__self {
@@ -52,6 +48,7 @@ body,
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
+	margin: 0 auto;
 	width: 35px;
 	border-radius: 3px;
 	transition: all 0.2s;
@@ -130,9 +127,16 @@ body,
 .overflow {
 	overflow-y: scroll;
 	overflow-x: hidden;
+	padding: 0 1em;
 }
 .overflow::-webkit-scrollbar {
 	width: 7px;
+}
+
+@media (max-width: 480px) {
+	.overflow {
+		width: 100%;
+	}
 }
 
 .skeleton {
@@ -196,6 +200,12 @@ body,
 
 .responsive {
 	display: block;
+}
+
+.mobilenav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 @media (max-width: 768px) {

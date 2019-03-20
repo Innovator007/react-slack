@@ -66,7 +66,7 @@ class ColorPanel extends Component {
 		colors.length > 0 && colors.map((color,i) => (
 			<React.Fragment key={i}>
 				<Divider />
-				<div className="color__container" onClick={() => this.props.setColors(color.primary,color.secondary)}>
+				<div className="color__container border" onClick={() => this.props.setColors(color.primary,color.secondary)}>
 					<div className="color__square" style={{background: color.primary}}>
 						<div className="color__overlay" style={{background: color.secondary}}>
 						</div>
@@ -94,14 +94,14 @@ class ColorPanel extends Component {
 	render() {
 		const { modal, primary, secondary, userColors, vertical } = this.state;
 		return (
-			<Sidebar as={Menu} icon="labeled" inverted vertical={vertical} visible width="very thin">
+			<Sidebar style={{ padding: "0.5em" }} as={Menu} icon="labeled" inverted vertical={vertical} visible width="very thin">
 				<Divider />
 				<Button icon="add" color="blue" size="small" onClick={this.openModal} />
 				<React.Fragment key={1000}>
 					<Divider />
-					<div className="color__container border" onClick={() => this.props.setColors(primary,secondary)}>
-						<div className="color__square" style={{background:primary}}>
-							<div className="color__overlay" style={{background: secondary}}>
+					<div className="color__container border" onClick={() => this.props.setColors("#4c3c4c","#eee")}>
+						<div className="color__square" style={{background:"#4c3c4c"}}>
+							<div className="color__overlay" style={{background: "#eee"}}>
 							</div>
 						</div>
 					</div>
@@ -115,12 +115,12 @@ class ColorPanel extends Component {
 						
 						<Segment inverted>
 							<Label content="Primary Color" />
-							<SliderPicker color={primary} onChange={this.handlePrimary} />
+							<SliderPicker color={primary} onChangeComplete={this.handlePrimary} />
 						</Segment>
 
 						<Segment inverted>
 							<Label content="Secondary Color" />
-							<SliderPicker color={secondary} onChange={this.handleSecondary} />
+							<SliderPicker color={secondary} onChangeComplete={this.handleSecondary} />
 						</Segment>
 					
 					</Modal.Content>

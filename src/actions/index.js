@@ -59,5 +59,3 @@ export const setColors = (primaryColor, secondaryColor) => {
 	}
 }
 
-
-

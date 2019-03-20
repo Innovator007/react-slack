@@ -22,11 +22,9 @@ class Login extends Component {
 			const { email, password } = this.state;
 			firebase.auth().signInWithEmailAndPassword(email,password)
 				.then(signedInUser => {
-					console.log(signedInUser);
 					this.setState({ errors: [], loading: false });
 				})
 				.catch(err => {
-					console.error(err);
 					this.setState({ errors: this.state.errors.concat(err), loading:false });
 				});
 		}

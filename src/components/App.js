@@ -6,42 +6,44 @@ import ColorPanel from './ColorPanel/ColorPanel';
 import SidePanel from './SidePanel/SidePanel';
 import Messages from './Messages/Messages';
 import MetaPanel from './MetaPanel/MetaPanel';
+import NavBar from './NavBar/NavBar';
 
-const App = ({ currentUser, currentChannel, isPrivateChannel, userPosts, primaryColor, secondaryColor }) => (
-	<Grid stackable columns="equal" className="app" style={{background: secondaryColor}}>
-		<ColorPanel
-			key={currentUser && currentUser.name} 
-			currentUser={currentUser} 
-		/>
-
-		<SidePanel 
-			key={currentUser && currentUser.uid} 
-			currentUser={currentUser} 
-			primaryColor={primaryColor}
-		/>
-
-		<Grid.Column className="messages__column">
-			
-			<Messages key={currentChannel && currentChannel.id} 
+const App = ({ currentUser, currentChannel, isPrivateChannel, userPosts, primaryColor, secondaryColor, sidepanel }) => (
+	<Grid stackable className="app" style={{ backgroundColor: secondaryColor, margin: "0px" }}>
+	    <Grid.Column width={4} only="computer">
+	    	<ColorPanel
+				key={currentUser && currentUser.name} 
+				currentUser={currentUser} 
+			/>
+	    	<SidePanel 
+				key={currentUser && currentUser.uid} 
+				currentUser={currentUser} 
+				primaryColor={primaryColor}
+			/>
+	    </Grid.Column>
+			<Grid.Column only="mobile">
+				<NavBar 
+					currentUser={currentUser} 
+					primaryColor={primaryColor}
+				/>
+			</Grid.Column>
+	    <Grid.Column width={8}>
+	    	<Messages key={currentChannel && currentChannel.id} 
 				currentUser={currentUser} 
 				currentChannel={currentChannel} 
 				isPrivateChannel={isPrivateChannel}
 			/>
-		
-		</Grid.Column>
-
-		<Grid.Column width={4}>
-			
-			<MetaPanel 
-				key={currentChannel && currentChannel.name}
-				userPosts={userPosts} 
-				currentChannel={currentChannel}
-				isPrivateChannel={isPrivateChannel}
-			/>
-		
-		</Grid.Column>
-		
-	</Grid>
+	    </Grid.Column>
+	    <Grid.Column width={4}>
+	    	<MetaPanel 
+			key={currentChannel && currentChannel.name}
+			userPosts={userPosts} 
+			currentChannel={currentChannel}
+			isPrivateChannel={isPrivateChannel}
+			currentUser={currentUser}
+		/>
+	    </Grid.Column>
+    </Grid>
 )
 
 const mapStateToProps = state => {
